@@ -1,6 +1,5 @@
 ﻿  Array.cpp
   Avl.cpp
-  Container.cpp
   Heap.cpp
 C:\Users\JeLLek\Desktop\programowanie\ZlozonoscObliczeniowa\git\ZlozonoscObliczeniowa\Heap.cpp(175,18): warning C4244: "argument": konwersja z "time_t" do "unsigned int", możliwa utrata danych
 C:\Users\JeLLek\Desktop\programowanie\ZlozonoscObliczeniowa\git\ZlozonoscObliczeniowa\Heap.cpp(410,28): warning C4267: "=": konwersja z "size_t" do "int", możliwa utrata danych

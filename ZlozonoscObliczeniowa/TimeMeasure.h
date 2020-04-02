@@ -11,7 +11,7 @@
 class TimeMeasure : public Container
 {
 private:
-	static const int MAX_MENU = 2;
+	static const int MAX_MENU = 1;
 	std::chrono::high_resolution_clock::time_point start;
 	void restart();
 	long long returnTime();

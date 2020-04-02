@@ -4,7 +4,7 @@
 class Heap : public Container
 {
 private:
-	static const size_t HEAP_MAX_SIZE = 55000;
+	static const size_t HEAP_MAX_SIZE = 100000;
 	int* heap;
 	static size_t heapLevel(size_t index);
 	static size_t powerTwo(size_t index);

@@ -23,6 +23,7 @@ long long TimeMeasure::returnTime()
 //testy
 bool TimeMeasure::test(int size)
 {
+	this->restart();
 	std::string fileOutput = "";
 	fileOutput += "ilosc testow: " + std::to_string(size) + "\n";
 	fileOutput += "Test na tablicy - dodawanie:\n-pocz¹tek: ";
@@ -30,16 +31,17 @@ bool TimeMeasure::test(int size)
 	for (int i = 0; i < size; i++) {
 		this->array->pushFront(i);
 	}
-	fileOutput += std::to_string(this->returnTime()) += "us\n-koniec: ";
+	fileOutput += std::to_string(this->returnTime()/static_cast<double>(size)) += "us\n-koniec: ";
 	if (!this->array->loadFile(this->file)) {
 		return false;
 	}
 
 	this->restart();
+
 	for (int i = 0; i < size; i++) {
 		this->array->pushBack(i);
 	}
-	fileOutput += std::to_string(this->returnTime()) += "us\n-œrodek: ";
+	fileOutput += std::to_string(this->returnTime()/static_cast<double>(size)) += "us\n-œrodek: ";
 	if (!this->array->loadFile(this->file)) {
 		return false;
 	}
@@ -48,7 +50,7 @@ bool TimeMeasure::test(int size)
 	for (int i = 0; i < size; i++) {
 		this->array->push(i / 2, static_cast<size_t>(i / 2));
 	}
-	fileOutput += std::to_string(this->returnTime()) += "us\n:Test na tablicy - usuwanie\n-poczatek:";
+	fileOutput += std::to_string(this->returnTime()/static_cast<double>(size)) += "us\n:Test na tablicy - usuwanie\n-poczatek:";
 	if (!this->array->loadFile(this->file)) {
 		return false;
 	}
@@ -57,7 +59,7 @@ bool TimeMeasure::test(int size)
 	for (int i = 0; i < size; i++) {
 		this->array->popFront();
 	}
-	fileOutput += std::to_string(this->returnTime()) += "us\n-koniec: ";
+	fileOutput += std::to_string(this->returnTime()/static_cast<double>(size)) += "us\n-koniec: ";
 	if (!this->array->loadFile(this->file)) {
 		return false;
 	}
@@ -66,7 +68,7 @@ bool TimeMeasure::test(int size)
 	for (int i = 0; i < size; i++) {
 		this->array->popBack();
 	}
-	fileOutput += std::to_string(this->returnTime()) += "us\n-œrodek: ";
+	fileOutput += std::to_string(this->returnTime()/static_cast<double>(size)) += "us\n-œrodek: ";
 	if (!this->array->loadFile(this->file)) {
 		return false;
 	}
@@ -75,7 +77,7 @@ bool TimeMeasure::test(int size)
 	for (int i = 0; i < size; i++) {
 		this->array->pop(i / 2);
 	}
-	fileOutput += std::to_string(this->returnTime()) + "us\nTest na tablicy - wyszukiwanie: ";
+	fileOutput += std::to_string(this->returnTime()/static_cast<double>(size)) + "us\nTest na tablicy - wyszukiwanie: ";
 	if (!this->array->loadFile(this->file)) {
 		return false;
 	}
@@ -84,13 +86,13 @@ bool TimeMeasure::test(int size)
 	for (int i = 0; i < size; i++) {
 		foo = this->array->find(i);
 	}
-	fileOutput += std::to_string(this->returnTime()) + "us\nTest na liœcie - dodawanie: \n -na poczatek: ";
+	fileOutput += std::to_string(this->returnTime()/static_cast<double>(size)) + "us\nTest na liœcie - dodawanie: \n -na poczatek: ";
 
 	this->restart();
 	for (int i = 0; i < size; i++) {
 		this->list->pushFront(i);
 	}
-	fileOutput += std::to_string(this->returnTime()) += "us\n-koniec: ";
+	fileOutput += std::to_string(this->returnTime()/static_cast<double>(size)) += "us\n-koniec: ";
 	if (!this->list->loadFile(this->file)) {
 		return false;
 	}
@@ -99,7 +101,7 @@ bool TimeMeasure::test(int size)
 	for (int i = 0; i < size; i++) {
 		this->list->pushBack(i);
 	}
-	fileOutput += std::to_string(this->returnTime()) += "us\n-œrodek: ";
+	fileOutput += std::to_string(this->returnTime()/static_cast<double>(size)) += "us\n-œrodek: ";
 	if (!this->list->loadFile(this->file)) {
 		return false;
 	}
@@ -108,7 +110,7 @@ bool TimeMeasure::test(int size)
 	for (int i = 0; i < size; i++) {
 		this->list->push(i / 2, static_cast<size_t>(i / 2));
 	}
-	fileOutput += std::to_string(this->returnTime()) += "us\n:Test na liœcie - usuwanie\n-poczatek:";
+	fileOutput += std::to_string(this->returnTime()/static_cast<double>(size)) += "us\n:Test na liœcie - usuwanie\n-poczatek:";
 	if (!this->list->loadFile(this->file)) {
 		return false;
 	}
@@ -117,7 +119,7 @@ bool TimeMeasure::test(int size)
 	for (int i = 0; i < size; i++) {
 		this->list->popFront();
 	}
-	fileOutput += std::to_string(this->returnTime()) += "us\n-koniec: ";
+	fileOutput += std::to_string(this->returnTime()/static_cast<double>(size)) += "us\n-koniec: ";
 	if (!this->list->loadFile(this->file)) {
 		return false;
 	}
@@ -126,7 +128,7 @@ bool TimeMeasure::test(int size)
 	for (int i = 0; i < size; i++) {
 		this->list->popBack();
 	}
-	fileOutput += std::to_string(this->returnTime()) += "us\n-œrodek: ";
+	fileOutput += std::to_string(this->returnTime()/static_cast<double>(size)) += "us\n-œrodek: ";
 	if (!this->list->loadFile(this->file)) {
 		return false;
 	}
@@ -135,7 +137,7 @@ bool TimeMeasure::test(int size)
 	for (int i = 0; i < size; i++) {
 		this->list->pop(i / 2);
 	}
-	fileOutput += std::to_string(this->returnTime()) + "us\nTest na liœcie - wyszukiwanie: ";
+	fileOutput += std::to_string(this->returnTime()/static_cast<double>(size)) + "us\nTest na liœcie - wyszukiwanie: ";
 	if (!this->list->loadFile(this->file)) {
 		return false;
 	}
@@ -144,7 +146,7 @@ bool TimeMeasure::test(int size)
 	for (int i = 0; i < size; i++) {
 		foo = this->list->find(i);
 	}
-	fileOutput += std::to_string(this->returnTime()) + "us\nTest na kopcu - dodawanie: ";
+	fileOutput += std::to_string(this->returnTime()/static_cast<double>(size)) + "us\nTest na kopcu - dodawanie: ";
 	if (!this->array->loadFile(this->file)) {
 		return false;
 	}
@@ -153,7 +155,7 @@ bool TimeMeasure::test(int size)
 	for (int i = 0; i < size; i++) {
 		this->heap->push(i);
 	}
-	fileOutput += std::to_string(this->returnTime()) + "us\nTest na kopcu - usuwanie: \n -test dostêpu do tablicy dla usuwania: ";
+	fileOutput += std::to_string(this->returnTime()/static_cast<double>(size)) + "us\nTest na kopcu - usuwanie: \n -test dostêpu do tablicy dla usuwania: ";
 	if (!this->heap->loadFile(this->file)) {
 		return false;
 	}
@@ -163,13 +165,13 @@ bool TimeMeasure::test(int size)
 	for (int i = 0; i < size; i++) {
 		test = this->array->array[i];
 	}
-	fileOutput += std::to_string(this->returnTime()) + "us\n -Usuwanie: ";
+	fileOutput += std::to_string(this->returnTime()/static_cast<double>(size)) + "us\n -Usuwanie: ";
 
 	this->restart();
 	for (int i = 0; i < size; i++) {
 		this->heap->popValue(this->array->array[i]);
 	}
-	fileOutput += std::to_string(this->returnTime()) + "us\nTest na kopcu -Wyszukiwanie: ";
+	fileOutput += std::to_string(this->returnTime()/static_cast<double>(size)) + "us\nTest na kopcu -Wyszukiwanie: ";
 	if (!this->heap->loadFile(this->file)) {
 		return false;
 	}
@@ -178,7 +180,7 @@ bool TimeMeasure::test(int size)
 	for (int i = 0; i < size; i++) {
 		foo = this->heap->find(i);
 	}
-	fileOutput += std::to_string(this->returnTime()) + "us\nDrzewo czerwono czarne - dodawanie: ";
+	fileOutput += std::to_string(this->returnTime()/static_cast<double>(size)) + "us\nDrzewo czerwono czarne - dodawanie: ";
 	if (!this->heap->loadFile(this->file)) {
 		return false;
 	}
@@ -187,7 +189,7 @@ bool TimeMeasure::test(int size)
 	for (int i = 0; i < size; i++) {
 		this->rbTree->push(i);
 	}
-	fileOutput += std::to_string(this->returnTime()) + "us\nDrzewo czerwono czarne Usuwanie (korekta z kopca nale¿y wzi¹æ): ";
+	fileOutput += std::to_string(this->returnTime()/static_cast<double>(size)) + "us\nDrzewo czerwono czarne Usuwanie (korekta z kopca nale¿y wzi¹æ): ";
 	if (!this->rbTree->loadFile(this->file)) {
 		return false;
 	}
@@ -196,22 +198,22 @@ bool TimeMeasure::test(int size)
 	for (int i = 0; i < size; i++) {
 		this->rbTree->popValue(this->array->array[i]);
 	}
-	fileOutput += std::to_string(this->returnTime()) + "us\nDrzewo czerwono czarne - wyszukiwanie: ";
+	fileOutput += std::to_string(this->returnTime()/static_cast<double>(size)) + "us\nDrzewo czerwono czarne - wyszukiwanie: ";
 	if (!this->rbTree->loadFile(this->file)) {
 		return false;
 	}
 
 	this->restart();
 	for (int i = 0; i < size; i++) {
-		this->rbTree->find(i);
+		foo = this->rbTree->find(i);
 	}
-	fileOutput += std::to_string(this->returnTime()) + "us\nDrzewo avl - dodawanie: ";
+	fileOutput += std::to_string(this->returnTime()/static_cast<double>(size)) + "us\nDrzewo avl - dodawanie: ";
 
 	this->restart();
 	for (int i = 0; i < size; i++) {
 		this->avl->push(i);
 	}
-	fileOutput += std::to_string(this->returnTime()) + "us\nDrzewo avl - usuwanie (nale¿y wzi¹æ poprawkê z kopca): ";
+	fileOutput += std::to_string(this->returnTime()/static_cast<double>(size)) + "us\nDrzewo avl - usuwanie (nale¿y wzi¹æ poprawkê z kopca): ";
 
 	if (!this->avl->loadFile(this->file)) {
 		return false;
@@ -220,7 +222,7 @@ bool TimeMeasure::test(int size)
 	for (int i = 0; i < size; i++) {
 		this->avl->popValue(this->array->array[i]);
 	}
-	fileOutput += std::to_string(this->returnTime()) + "us\nDrzewo avl - wyszukiwanie: ";
+	fileOutput += std::to_string(this->returnTime()/static_cast<double>(size)) + "us\nDrzewo avl - wyszukiwanie: ";
 
 	if (!this->avl->loadFile(this->file)) {
 		return false;
@@ -229,7 +231,7 @@ bool TimeMeasure::test(int size)
 	for (int i = 0; i < size; i++) {
 		foo = this->avl->find(i);
 	}
-	fileOutput += std::to_string(this->returnTime()) + "us";
+	fileOutput += std::to_string(this->returnTime()/static_cast<double>(size)) + "us";
 
 	std::fstream fileTemp;
 	fileTemp.open(TimeMeasure::RESULTFILE, std::ios::out | std::ios::trunc);
