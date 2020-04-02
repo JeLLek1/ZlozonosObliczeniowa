@@ -1,0 +1,30 @@
+ilosc testow: 1000
+Test na tablicy - dodawanie:
+-pocz¹tek: 43420us
+-koniec: 44278us
+-œrodek: 41999us
+:Test na tablicy - usuwanie
+-poczatek:40204us
+-koniec: 38725us
+-œrodek: 40326us
+Test na tablicy - wyszukiwanie: 36327us
+Test na liœcie - dodawanie: 
+ -na poczatek: 134us
+-koniec: 133us
+-œrodek: 967us
+:Test na liœcie - usuwanie
+-poczatek:149us
+-koniec: 166us
+-œrodek: 1107us
+Test na liœcie - wyszukiwanie: 158059us
+Test na kopcu - dodawanie: 38us
+Test na kopcu - usuwanie: 
+ -test dostêpu do tablicy dla usuwania: 2us
+ -Usuwanie: 17912us
+Test na kopcu -Wyszukiwanie: 38211us
+Drzewo czerwono czarne - dodawanie: 407us
+Drzewo czerwono czarne Usuwanie (korekta z kopca nale¿y wzi¹æ): 679us
+Drzewo czerwono czarne - wyszukiwanie: 63us
+Drzewo avl - dodawanie: 327us
+Drzewo avl - usuwanie (nale¿y wzi¹æ poprawkê z kopca): 119us
+Drzewo avl - wyszukiwanie: 65

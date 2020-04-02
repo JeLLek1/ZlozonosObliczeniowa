@@ -1,0 +1,8 @@
+Test na tablicy - dodawanie:
+-pocz¹tek: 40997us
+-koniec: 44038us
+-œrodek: 45722us
+:Test na tablicy - usuwanie
+-poczatek:40512us
+-koniec: 41548us
+-œrodek: 43595
